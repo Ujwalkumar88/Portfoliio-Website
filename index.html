@@ -18,7 +18,7 @@
         body {
             height: 100%;
             width: 100%;
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-x: hidden;
             background-color: rgb(1, 1, 103);
             font-family: "Poppins", sans-serif;
         }
@@ -34,15 +34,22 @@
             position: fixed;
             top: 0;
             left: 0;
-            z-index: 10;
+            z-index: 1000;
             padding: 0 20px;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
         }
 
         .logo {
-            font-size: 1.3vw;
+            font-size: 1.3rem;
             font-family: "Quicksand", sans-serif;
             font-weight: 600;
+            cursor: pointer;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            color: white;
             cursor: pointer;
         }
 
@@ -51,8 +58,23 @@
             display: flex;
         }
 
+        ul.active {
+            display: block;
+            position: absolute;
+            top: 80px;
+            left: 0;
+            background-color: rgb(2, 2, 71);
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+        }
+
         li {
             margin: 0 20px;
+        }
+
+        ul.active li {
+            margin: 10px 0;
         }
 
         a {
@@ -62,27 +84,24 @@
         }
 
         a:hover {
-            font-size: 1.1rem;
             color: purple;
         }
 
         .content {
             margin-top: 80px;
+            padding: 20px;
             display: flex;
             flex-wrap: wrap;
-            height: auto;
-            padding: 20px;
+            justify-content: center;
         }
 
         .left {
-            margin-top: 10%;
-            padding: 20px;
-            flex: 2;
-            min-width: 300px;
+            flex: 1;
+            text-align: center;
         }
 
         .left h2 {
-            font-size: 3vw;
+            font-size: 2rem;
             color: white;
             margin: 8px 0;
         }
@@ -95,120 +114,46 @@
             flex: 1;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-width: 300px;
         }
 
         .right img {
-            max-height: 80%;
             max-width: 100%;
-            margin: 30px 90px;
-        }
-
-        .second-section {
-            padding: 20px 10px;
-            color: white;
-            text-align: center;
-   margin: 116px 0px;
-        }
-
-        .second-section h2 {
-            margin: 15px 0;
-            font-size: 1.8vw;
-        }
-
-        .box {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin: 20px auto;
-            width: 90%;
-            gap: 15px;
-        }
-
-        .box .vertical {
-            text-align: left;
-            flex: 1 1 300px;
-        }
-
-        .vertical h6 {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-
-        .vertical p {
-            font-size: 0.9rem;
-            color: rgb(197, 193, 193);
-            line-height: 1.5;
+            height: auto;
+            margin: 0 auto;
         }
 
         footer {
-    background-color: #0e0d0d;
-    color: white;
-    padding: 41px 0;
-    text-align: center;
-    position: relative; /* Changed from static */
-    width: 100%; /* Ensures it spans the full width */
-    box-sizing: border-box;
-    height: 150px;
-}
- 
-
-        footer .footer-section {
-            margin: 10px 0;
+            background-color: #0e0d0d;
+            color: white;
+            text-align: center;
+            padding: 20px;
         }
 
         /* Media Queries */
         @media (max-width: 768px) {
-            .nav ul {
+            .hamburger {
+                display: block;
+            }
+
+            ul {
+                display: none;
                 flex-direction: column;
                 align-items: center;
-                background-color: rgb(2, 2, 71);
-                padding: 10px;
-                position: absolute;
-                top: 80px;
-                left: 0;
                 width: 100%;
-                display: none;
-                transition: all 0.3s ease-in-out;
-            }
-
-            .nav ul.active {
-                display: flex;
-            }
-
-            .nav .logo {
-                font-size: 4vw;
-            }
-
-            .nav ul li {
-                margin: 10px 0;
             }
 
             .content {
                 flex-direction: column;
-                padding: 10px;
+                text-align: center;
             }
 
             .left h2 {
-                font-size: 5vw;
+                font-size: 1.5rem;
             }
 
             .right img {
-                margin: 60px  0px 0px 0px;
-                height: 70%;
-                width: 60%;
+                width: 80%;
             }
-
-            .second-section h2 {
-                font-size: 3.5vw;
-            }
-           
-    footer {
-        padding: 10px 0; /* Reduced padding for smaller screens */
-        font-size: 0.9rem; /* Slightly smaller text size */
-    }
         }
     </style>
 </head>
@@ -216,6 +161,7 @@
 <body>
     <div class="nav">
         <div class="logo">Ujwal's Portfolio</div>
+        <i class="ri-menu-line hamburger"></i>
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
@@ -236,33 +182,8 @@
         </div>
     </div>
 
-    <div class="second-section">
-        <hr>
-        <p>What I have done so far</p>
-        <h2>Past Experience</h2>
-        <div class="box">
-            <div class="vertical">
-                <h6>HTML, CSS (in 9th class)</h6>
-                <p>Gained foundational knowledge of HTML and CSS, building static web pages.</p>
-            </div>
-            <div class="vertical">
-                <h6>JavaScript (in 10th class)</h6>
-                <p>Learned JavaScript basics, exploring programming concepts and interactivity.</p>
-            </div>
-            <div class="vertical">
-                <h6>Small Projects (mid 10th)</h6>
-                <p>Worked on beginner-level projects to apply JavaScript and CSS knowledge.</p>
-            </div>
-            <div class="vertical">
-                <h6>Responsive Design</h6>
-                <p>Started learning responsive web design to enhance user experiences.</p>
-            </div>
-        </div>
-    </div>
-
     <footer>
-        <div class="footer-section">Ujwal's Developer Portfolio</div>
-        <div class="footer-section">WEEBLY THEMES | PRE-SALE FAQS | SUBMIT A TICKET</div>
+        <p>Ujwal's Developer Portfolio</p>
     </footer>
 
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
@@ -273,8 +194,11 @@
         });
 
         // Toggle Navbar
-        document.querySelector('.logo').addEventListener('click', function () {
-            document.querySelector('.nav ul').classList.toggle('active');
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('ul');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
         });
     </script>
 </body>
